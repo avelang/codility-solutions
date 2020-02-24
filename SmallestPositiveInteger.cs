@@ -29,10 +29,12 @@ namespace CodilityProblems {
             int smallestPosInteger = 0;
             Array.Sort(A);
 
-            if ((A[0] > 1) || (A[A.Length - 1] <= 0)) {
-                return smallestPosInteger = 1;
+            if ((A[0] > 1) || (A[A.Length - 1] <= 0)) 
+            {
+                return smallestPosInteger = A[0] - 1;
             }
-            else {
+            else 
+            {
                 for (int i = 0; i < A.Length - 1; i++)
                 {
                     if ((A[i + 1] - A[i] > 1))
