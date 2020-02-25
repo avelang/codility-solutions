@@ -1,9 +1,10 @@
 ﻿using System;
-// you can also use other imports, for example:
-// using System.Collections.Generic;
-
-// you can write to stdout for debugging purposes, e.g.
-// Console.WriteLine("this is a debug message");
+/*
+ In a 2-D array of integers, identity the biggest number possible by traversing a path of 
+ 4 neighbouring cells
+ eg : [1,2],[3,4] -> should output 4312
+      [4,3],[1,2] -> should output 4321
+ */
 
 namespace codility_solutions
 {
@@ -40,19 +41,19 @@ namespace codility_solutions
             }
             else if (column < colLength - 1)// if right path exists, move right
             {
-                return CreateNumber(numToSend, row, column++, digit++, TestBoard, colLength, rowLength);
-            }
-            else if (column > 0)// if left path exists, move left
-            {
-                return CreateNumber(numToSend, row, column--, digit++, TestBoard, colLength, rowLength);
+                return CreateNumber(numToSend, row, ++column, ++digit, TestBoard, colLength, rowLength);
             }
             else if (row < rowLength - 1)// if bottom path exists, move down
             {
-                return CreateNumber(numToSend, row++, column, digit++, TestBoard, colLength, rowLength);
+                return CreateNumber(numToSend, ++row, column, ++digit, TestBoard, colLength, rowLength);
+            }
+            else if (column > 0)// if left path exists, move left
+            {
+                return CreateNumber(numToSend, row, --column, ++digit, TestBoard, colLength, rowLength);
             }
             else if (row > 0)// if top path exists, move up
             {
-                return CreateNumber(numToSend, row--, column, digit++, TestBoard, colLength, rowLength);
+                return CreateNumber(numToSend, --row, column, ++digit, TestBoard, colLength, rowLength);
             }
             else
             {
