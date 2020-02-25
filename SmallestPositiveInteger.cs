@@ -20,7 +20,8 @@ Write an efficient algorithm for the following assumptions:
 N is an integer within the range[1..100, 000];
 each element of array A is an integer within the range[−1, 000, 000..1, 000, 000].
 */
-namespace CodilityProblems {
+namespace codility_solutions
+{
     public class SmallestPositiveInteger
     {
         public int solution(int[] A)
@@ -29,11 +30,15 @@ namespace CodilityProblems {
             int smallestPosInteger = 0;
             Array.Sort(A);
 
-            if ((A[0] > 1) || (A[A.Length - 1] <= 0)) 
+            if ((A[0] > 1))
             {
                 return smallestPosInteger = A[0] - 1;
             }
-            else 
+            else if ((A[A.Length - 1] <= 0))
+            {
+                return smallestPosInteger = 1;
+            }
+            else
             {
                 for (int i = 0; i < A.Length - 1; i++)
                 {
@@ -43,7 +48,7 @@ namespace CodilityProblems {
                         {
                             smallestPosInteger = A[i] + 1;
                         }
-                        else 
+                        else
                         {
                             smallestPosInteger = 1;
                         }
@@ -52,7 +57,7 @@ namespace CodilityProblems {
                 }
                 if (smallestPosInteger == 0)
                 {
-                        smallestPosInteger = A[A.Length - 1] + 1;
+                    smallestPosInteger = A[A.Length - 1] + 1;
                 }
                 return smallestPosInteger;
             }
