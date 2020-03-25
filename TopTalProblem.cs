@@ -34,17 +34,25 @@ namespace codility_solutions
             {
                 for (int j = 0; j < colLength; j++)
                 {
-                    Max_Num = Math.Max(Board[i][j], Max_Num);
-                    max_i = i; max_j = j;
+                    if(Board[i][j] > Max_Num)
+                    {
+                        Max_Num = Board[i][j];
+                        max_i = i;
+                        max_j = j;
+                    }
                 }
             }
 
             int out_row, out_col;
+            Hashtable visited = new Hashtable();
+            visited.Add(String.Format("{0}_{1}", max_i, max_j), true);
+            Hashtable out_visited = new Hashtable();
             while (count > 0)
             {
-                Max_Num = Max_Num * 10 + LargestNeighbor(out out_row, out out_col, max_i, max_j, Board, rowLength, colLength);
+                Max_Num = Max_Num * 10 + LargestNeighbor(out out_row, out out_col, out out_visited, max_i, max_j, Board, rowLength, colLength, visited);
                 max_i = out_row; 
                 max_j = out_col;
+                visited = out_visited;
 
                 count--;
             }
@@ -52,14 +60,14 @@ namespace codility_solutions
             return Max_Num;
         }
 
-        // TO-DO : Add logic to check if the index is "visited" - i.e. path exists and not visited.
-        public int LargestNeighbor(out int out_row, out int out_column, int row, int column, int[][] TestBoard, int colLength, int rowLength) {
+        public int LargestNeighbor(out int out_row, out int out_column, out Hashtable out_visited,
+                    int row, int column, int[][] TestBoard, int colLength, int rowLength, Hashtable visited) {
             int maxNum = -1;
             out_row = -1;
             out_column = -1;
-            Hashtable visited = new Hashtable();
-            visited.Add(String.Format("{0}_{1}", row, column), true);
-            if (column < colLength - 1) // if right path exists, move right
+
+            // if right path exists & not visited, move right
+            if ((column < colLength - 1) && (!visited.Contains(String.Format("{0}_{1}", row, column+1)))) 
                 if (TestBoard[row][column+1] > maxNum)
                 {
                     maxNum = TestBoard[row][column+1];
@@ -67,7 +75,8 @@ namespace codility_solutions
                     out_row = row;
                     out_column = column+1;
                 }
-            if (row < rowLength - 1) // if bottom path exists, move down
+            // if bottom path exists & not visited, move down
+            if ((row < rowLength - 1) && (!visited.Contains(String.Format("{0}_{1}", row+1, column)))) 
                 if (TestBoard[row+1][column] > maxNum)
                 {
                     maxNum = TestBoard[row+1][column];
@@ -75,7 +84,8 @@ namespace codility_solutions
                     out_row = row+1;
                     out_column = column;
                 }
-            if (column > 0) // if left path exists, move left
+            // if left path exists & not visited, move left
+            if ((column > 0) && (!visited.Contains(String.Format("{0}_{1}", row, column-1))))
                 if (TestBoard[row][column - 1] > maxNum)
                 {
                     maxNum = TestBoard[row][column-1];
@@ -83,7 +93,8 @@ namespace codility_solutions
                     out_row = row;
                     out_column = column-1;
                 }
-            if (row > 0) // if top path exists, move up
+            // if top path exists & not visited, move up
+            if ((row > 0) && (!visited.Contains(String.Format("{0}_{1}", row-1, column))))
                 if (TestBoard[row-1][column] > maxNum)
                 {
                     maxNum = TestBoard[row-1][column];
@@ -91,6 +102,7 @@ namespace codility_solutions
                     out_row = row -1;
                     out_column = column;
                 }
+            out_visited = visited;
             return maxNum;
         }
 
