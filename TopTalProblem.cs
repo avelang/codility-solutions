@@ -106,6 +106,52 @@ namespace codility_solutions
             return maxNum;
         }
 
+        public int[] rotLeft(int[] a, int d)
+        {
+            // declare new array
+            int[] b = new int[a.Length];
+            // for indexes o to len-1     
+            for (int i = 0; i < b.Length; i++)
+            {
+                if (b.Length - i - 1 < d)
+                    b[i] = a[i-(b.Length-d)];
+                else
+                    b[i] = a[i + d];
+            }
+            return b;
+        }
+
+        // 1,2,5,3,7,8,6,4
+        // 1,2,3,4,5,6,7,8
+        // 0,0,-2,1,-2,-2,1,4
+        public void minimumBribes(int[] q)
+        {
+            int bribes = 0;
+            bool isChaos = false;
+            for (int i = 0; i < q.Length-1; i++)
+            {
+                if(q[i]>(i+1)) // this means the number got shifted from its index
+                {
+                    if ((q[i] - q[i + 1]) > 2)
+                    {
+                        isChaos = true;
+                        break;
+                    }
+                    else
+                    {
+                        bribes += (q[i] - (i + 1));
+                    } 
+                }
+            }
+            if(isChaos)
+            {
+                Console.WriteLine("Too chaotic");
+            }
+            else
+            {
+                Console.WriteLine(bribes);
+            }
+        }
     }
 }
 
