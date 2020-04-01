@@ -120,10 +120,6 @@ namespace codility_solutions
             }
             return b;
         }
-
-        // 1,2,5,3,7,8,6,4
-        // 1,2,3,4,5,6,7,8
-        // 0,0,-2,1,-2,-2,1,4
         public void minimumBribes(int[] q)
         {
             int bribes = 0;
