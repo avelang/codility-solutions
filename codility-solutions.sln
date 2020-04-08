@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "codility-solutions", "codil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codility-solutions-test", "..\codility-solutions-test\codility-solutions-test.csproj", "{5FC2D3F4-57BF-4977-B2A6-BAF690165C36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codility-solutionsTests", "..\codility-solutionsTests\codility-solutionsTests.csproj", "{B19B0232-DC02-449F-98A5-88188DB7D9CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5FC2D3F4-57BF-4977-B2A6-BAF690165C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FC2D3F4-57BF-4977-B2A6-BAF690165C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FC2D3F4-57BF-4977-B2A6-BAF690165C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B19B0232-DC02-449F-98A5-88188DB7D9CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B19B0232-DC02-449F-98A5-88188DB7D9CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B19B0232-DC02-449F-98A5-88188DB7D9CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B19B0232-DC02-449F-98A5-88188DB7D9CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
